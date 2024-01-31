@@ -25,7 +25,9 @@ class Level:
                 if col == "x":
                     Tile((x, y), [self.visibleSprites, self.obstacleSprites])
                 if col == "p":
-                    self.player = Player((x, y), [self.visibleSprites])
+                    self.player = Player(
+                        (x, y), [self.visibleSprites], self.obstacleSprites
+                    )
 
     def run(self):
         # update and draw the game
