@@ -56,11 +56,6 @@ class Level:
                                 "object",
                                 surf,
                             )
-        #        if col == "x":
-        #            Tile((x, y), , self.obstacleSprites])
-        #        if col == "p":
-        #            self.player = Player(
-        #                (x, y), [self.visibleSprites], self.obstacleSprites
         self.player = Player((2000, 1430), [self.visibleSprites], self.obstacleSprites)
 
     def run(self):
@@ -68,6 +63,7 @@ class Level:
         self.visibleSprites.customDraw(self.player)
         self.visibleSprites.update()
         #!debug(self.player.direction) debug for player direction
+        debug(self.player.status)
 
 
 class YSortCameraGroup(pygame.sprite.Group):

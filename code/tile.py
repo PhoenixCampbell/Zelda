@@ -11,7 +11,7 @@ class Tile(pygame.sprite.Sprite):
         self.image = surface
         if spriteType == "object":
             # offset
-            self.rect = self.image.get_rectangle(topleft=(pos[0], pos[1]) - TILESIZE)
+            self.rect = self.image.get_rect(topleft=(pos[0], pos[1] - TILESIZE))
         else:
             self.rect = self.image.get_rect(topleft=pos)
         self.hitbox = self.rect.inflate(0, -10)
