@@ -8,7 +8,7 @@ class Game:
         # general setup
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
-        pygame.display.set_caption("Zelda")
+        pygame.display.set_caption("Island Hopper")
         self.clock = pygame.time.Clock()
 
         self.level = Level()

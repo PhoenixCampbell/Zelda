@@ -6,13 +6,20 @@ from player import Player
 from debug import debug
 from support import *
 from random import choice
+from weapon import Weapon
 
 
 class Level:
     def __init__(self):
+
+        self.displaySurface = pygame.display.get_surface()
+
         # sprite group setup
         self.visibleSprites = YSortCameraGroup()
         self.obstacleSprites = pygame.sprite.Group()
+
+        # attack sprite
+        self.currentAttack = None
 
         # sprite setup
         self.create_map()
@@ -56,14 +63,28 @@ class Level:
                                 "object",
                                 surf,
                             )
-        self.player = Player((2000, 1430), [self.visibleSprites], self.obstacleSprites)
+        self.player = Player(
+            (2000, 1430),
+            [self.visibleSprites],
+            self.obstacleSprites,
+            self.createAttack,
+            self.destroyAttack,
+        )
+
+    def createAttack(self):
+        self.currentAttack = Weapon(self.player, [self.visibleSprites])
+
+    def destroyAttack(self):
+        if self.currentAttack:
+            self.currentAttack.kill()
+        self.currentAttack = None
 
     def run(self):
         # update and draw the game
         self.visibleSprites.customDraw(self.player)
         self.visibleSprites.update()
         #!debug(self.player.direction) debug for player direction
-        debug(self.player.status)
+        #!debug(self.player.status) check for different idle/attack types
 
 
 class YSortCameraGroup(pygame.sprite.Group):
