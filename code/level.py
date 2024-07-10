@@ -7,6 +7,7 @@ from debug import debug
 from support import *
 from random import choice
 from weapon import Weapon
+from ui import UI
 
 
 class Level:
@@ -23,6 +24,9 @@ class Level:
 
         # sprite setup
         self.create_map()
+
+        # user interface setup
+        self.ui = UI()
 
     def create_map(self):
         layouts = {
@@ -83,6 +87,7 @@ class Level:
         # update and draw the game
         self.visibleSprites.customDraw(self.player)
         self.visibleSprites.update()
+        self.ui.display(self.player)
         #!debug(self.player.direction) debug for player direction
         #!debug(self.player.status) check for different idle/attack types
 

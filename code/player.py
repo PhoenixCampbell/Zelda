@@ -32,6 +32,13 @@ class Player(pygame.sprite.Sprite):
         self.WeaponSwitchTime = None
         self.weaponSwitchCooldown = 200
 
+        # stats
+        self.stats = {"health": 100, "energy": 60, "attack": 10, "magic": 4, "speed": 5}
+        self.health = self.stats["health"]
+        self.energy = self.stats["energy"]
+        self.exp = 120
+        self.speed = self.stats["speed"]
+
     def importPlayerAssets(self):
         characterPath = "./graphics/player/"
         self.animationType = {
